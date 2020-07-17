@@ -1,5 +1,7 @@
 package org.academiadecodigo.javabank.domain.account;
 
+import org.academiadecodigo.javabank.domain.Customer;
+
 /**
  * A savings account domain entity which requires a minimum balance
  * and can only be used for transferring money, not for debiting
@@ -18,8 +20,9 @@ public class SavingsAccount extends Account {
      *
      * @see Account#Account(int)
      */
-    public SavingsAccount(int id) {
+    public SavingsAccount(int id, Customer accountOwner) {
         super(id);
+        super.setAccountOwner(accountOwner);
     }
 
     /**
@@ -42,10 +45,14 @@ public class SavingsAccount extends Account {
     }
 
     /**
-     * @see Account#canWithdraw()
+     * @see Account#canWithdraw(double)
      */
     @Override
-    public boolean canWithdraw() {
-        return false;
+    public boolean canWithdraw(double amount) {
+        if (amount > super.getBalance()+MIN_BALANCE){
+            System.out.println("Not enough money in this account");
+            return false;
+        }
+        return true;
     }
 }

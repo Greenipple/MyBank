@@ -1,5 +1,7 @@
 package org.academiadecodigo.javabank.domain.account;
 
+import org.academiadecodigo.javabank.domain.Customer;
+
 /**
  * A generic account domain entity to be used as a base for concrete types of accounts
  */
@@ -7,7 +9,7 @@ public abstract class Account {
 
     private int id;
     private double balance = 0;
-
+    private Customer accountOwner;
     /**
      * Initializes a new {@code Account} instance with an id
      *
@@ -91,7 +93,18 @@ public abstract class Account {
      *
      * @return {@code true} if withdraw can be done
      */
-    public boolean canWithdraw() {
+    public boolean canWithdraw(double amount) {
+        if (amount > balance){
+            return false;
+        }
         return true;
+    }
+
+    public void setAccountOwner(Customer accountOwner) {
+        this.accountOwner = accountOwner;
+    }
+
+    public Customer getAccountOwner() {
+        return accountOwner;
     }
 }

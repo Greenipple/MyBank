@@ -12,8 +12,14 @@ import java.util.Map;
  */
 public class Customer {
 
+    private String name;
     private AccountManager accountManager;
     private Map<Integer, Account> accounts = new HashMap<>();
+
+    public Customer(){};
+    public Customer(String name){
+        this.name = name;
+    }
 
     /**
      * Sets the account manager
@@ -29,10 +35,10 @@ public class Customer {
      *
      * @param accountType the account type to be opened
      * @return the new account id
-     * @see AccountManager#openAccount(AccountType)
+     * @see AccountManager#openAccount(AccountType,Customer)
      */
     public int openAccount(AccountType accountType) {
-        Account account = accountManager.openAccount(accountType);
+        Account account = accountManager.openAccount(accountType, this);
         accounts.put(account.getId(), account);
         return account.getId();
     }
@@ -63,4 +69,7 @@ public class Customer {
         return balance;
     }
 
+    public String getName() {
+        return name;
+    }
 }

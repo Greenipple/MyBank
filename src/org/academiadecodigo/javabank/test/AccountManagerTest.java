@@ -1,5 +1,6 @@
 package org.academiadecodigo.javabank.test;
 
+import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.domain.account.AccountType;
 import org.academiadecodigo.javabank.managers.AccountManager;
@@ -11,13 +12,13 @@ public class AccountManagerTest {
         AccountManager accountManager = new AccountManager();
 
         // should be able to open a new checking account
-        Account a1 = accountManager.openAccount(AccountType.CHECKING);
+        Account a1 = accountManager.openAccount(AccountType.CHECKING, new Customer());
         if (a1.getBalance() != 0) {
             return false;
         }
 
         // should be able to open a new savings account
-        Account a2 = accountManager.openAccount(AccountType.SAVINGS);
+        Account a2 = accountManager.openAccount(AccountType.SAVINGS, new Customer());
         if (a2.getBalance() != 0) {
             return false;
         }

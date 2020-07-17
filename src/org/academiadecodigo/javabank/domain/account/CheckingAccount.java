@@ -1,5 +1,7 @@
 package org.academiadecodigo.javabank.domain.account;
 
+import org.academiadecodigo.javabank.domain.Customer;
+
 /**
  * A checking account with no restrictions
  * @see Account
@@ -12,8 +14,9 @@ public class CheckingAccount extends Account {
      *
      * @see Account#Account(int)
      */
-    public CheckingAccount(int id) {
+    public CheckingAccount(int id, Customer accountOwner) {
         super(id);
+        super.setAccountOwner(accountOwner);
     }
 
     /**

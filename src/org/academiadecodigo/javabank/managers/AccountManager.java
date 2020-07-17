@@ -1,5 +1,6 @@
 package org.academiadecodigo.javabank.managers;
 
+import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.domain.account.AccountType;
 import org.academiadecodigo.javabank.domain.account.CheckingAccount;
@@ -29,16 +30,18 @@ public class AccountManager {
      * @param accountType the account type
      * @return the new account
      */
-    public Account openAccount(AccountType accountType) {
+    public Account openAccount(AccountType accountType, Customer customer) {
 
         Account newAccount;
         numberAccounts++;
 
         if (accountType == AccountType.CHECKING) {
-            newAccount = new CheckingAccount(numberAccounts);
+            newAccount = new CheckingAccount(numberAccounts, customer);
+            System.out.println("You have opened a new checking account with the number " + numberAccounts);
 
         } else {
-            newAccount = new SavingsAccount(numberAccounts);
+            newAccount = new SavingsAccount(numberAccounts, customer);
+            System.out.println("You have opened a new savings account with the number " + numberAccounts);
         }
 
         accountMap.put(newAccount.getId(), newAccount);
@@ -65,7 +68,8 @@ public class AccountManager {
 
         Account account = accountMap.get(id);
 
-        if (!account.canWithdraw()) {
+        if (!account.canWithdraw(amount)) {
+            System.out.println("Not enough money in this account");
             return;
         }
 
@@ -89,5 +93,9 @@ public class AccountManager {
             srcAccount.debit(amount);
             dstAccount.credit(amount);
         }
+    }
+
+    public Map getAccountMap(){
+        return this.accountMap;
     }
 }
