@@ -12,13 +12,13 @@ public class AccountManagerTest {
         AccountManager accountManager = new AccountManager();
 
         // should be able to open a new checking account
-        Account a1 = accountManager.openAccount(AccountType.CHECKING, new Customer());
+        Account a1 = accountManager.openAccount(AccountType.CHECKING);
         if (a1.getBalance() != 0) {
             return false;
         }
 
         // should be able to open a new savings account
-        Account a2 = accountManager.openAccount(AccountType.SAVINGS, new Customer());
+        Account a2 = accountManager.openAccount(AccountType.SAVINGS);
         if (a2.getBalance() != 0) {
             return false;
         }

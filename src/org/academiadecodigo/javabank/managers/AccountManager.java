@@ -1,10 +1,7 @@
 package org.academiadecodigo.javabank.managers;
 
 import org.academiadecodigo.javabank.domain.Customer;
-import org.academiadecodigo.javabank.domain.account.Account;
-import org.academiadecodigo.javabank.domain.account.AccountType;
-import org.academiadecodigo.javabank.domain.account.CheckingAccount;
-import org.academiadecodigo.javabank.domain.account.SavingsAccount;
+import org.academiadecodigo.javabank.domain.account.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,19 +27,33 @@ public class AccountManager {
      * @param accountType the account type
      * @return the new account
      */
-    public Account openAccount(AccountType accountType, Customer customer) {
+    public Account openAccount(AccountType accountType) {
 
         Account newAccount;
         numberAccounts++;
 
         if (accountType == AccountType.CHECKING) {
-            newAccount = new CheckingAccount(numberAccounts, customer);
+            newAccount = new CheckingAccount(numberAccounts);
             System.out.println("You have opened a new checking account with the number " + numberAccounts);
 
         } else {
-            newAccount = new SavingsAccount(numberAccounts, customer);
+            newAccount = new SavingsAccount(numberAccounts);
             System.out.println("You have opened a new savings account with the number " + numberAccounts);
         }
+
+        accountMap.put(newAccount.getId(), newAccount);
+        return newAccount;
+    }
+
+    public Account openAccount(AccountType accountType, Customer customer) {
+
+        Account newAccount;
+        numberAccounts++;
+
+        newAccount = AccountFactory.create(accountType,numberAccounts,customer);
+
+        System.out.println (customer.getName() +" has opened a new " + accountType.getString()
+                + " account with the number " + numberAccounts);
 
         accountMap.put(newAccount.getId(), newAccount);
         return newAccount;
@@ -64,16 +75,16 @@ public class AccountManager {
      * @param id     the id of the account
      * @param amount the amount to withdraw
      */
-    public void withdraw(int id, double amount) {
+    public boolean withdraw(int id, double amount) {
 
         Account account = accountMap.get(id);
 
         if (!account.canWithdraw(amount)) {
-            System.out.println("Not enough money in this account");
-            return;
+            return false;
         }
 
         accountMap.get(id).debit(amount);
+        return true;
     }
 
     /**

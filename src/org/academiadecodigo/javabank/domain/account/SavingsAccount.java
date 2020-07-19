@@ -20,6 +20,9 @@ public class SavingsAccount extends Account {
      *
      * @see Account#Account(int)
      */
+    public SavingsAccount(int id) {
+        super(id);
+    }
     public SavingsAccount(int id, Customer accountOwner) {
         super(id);
         super.setAccountOwner(accountOwner);
@@ -50,7 +53,6 @@ public class SavingsAccount extends Account {
     @Override
     public boolean canWithdraw(double amount) {
         if (amount > super.getBalance()+MIN_BALANCE){
-            System.out.println("Not enough money in this account");
             return false;
         }
         return true;

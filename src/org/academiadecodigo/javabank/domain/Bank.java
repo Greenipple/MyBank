@@ -3,7 +3,6 @@ package org.academiadecodigo.javabank.domain;
 import org.academiadecodigo.javabank.managers.AccountManager;
 
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * The bank entity
@@ -11,7 +10,8 @@ import java.util.Set;
 public class Bank {
 
     private AccountManager accountManager;
-    private Set<Customer> customers = new HashSet<>();
+    private HashSet<Customer> customers = new HashSet<>();
+    private static int numberCustomers = 0;
 
     /**
      * Creates a new instance of Bank and initializes it with the given account manager
@@ -29,8 +29,13 @@ public class Bank {
      * @see Customer#setAccountManager(AccountManager)
      */
     public void addCustomer(Customer customer) {
+
+        numberCustomers++;
+
+        customer.setCustomerId(numberCustomers);
         customers.add(customer);
         customer.setAccountManager(accountManager);
+
     }
 
     /**
@@ -47,5 +52,9 @@ public class Bank {
         }
 
         return balance;
+    }
+
+    public HashSet getCustomers(){
+        return customers;
     }
 }

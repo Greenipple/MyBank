@@ -12,9 +12,10 @@ import java.util.Map;
  */
 public class Customer {
 
+    private int customerId;
     private String name;
     private AccountManager accountManager;
-    private Map<Integer, Account> accounts = new HashMap<>();
+    private HashMap<Integer, Account> accounts = new HashMap<>();
 
     public Customer(){};
     public Customer(String name){
@@ -35,7 +36,7 @@ public class Customer {
      *
      * @param accountType the account type to be opened
      * @return the new account id
-     * @see AccountManager#openAccount(AccountType,Customer)
+     * @see AccountManager#openAccount(AccountType)
      */
     public int openAccount(AccountType accountType) {
         Account account = accountManager.openAccount(accountType, this);
@@ -71,5 +72,16 @@ public class Customer {
 
     public String getName() {
         return name;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getCustomerId(){
+        return customerId;
+    }
+    public HashMap getAccounts(){
+        return accounts;
     }
 }

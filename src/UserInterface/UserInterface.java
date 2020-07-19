@@ -1,10 +1,9 @@
-package org.academiadecodigo.javabank;
+package UserInterface;
+
+import UserInterface.Menus.MenuTypes.MenuType;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerSetInputScanner;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleInputScanner;
 import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.Account;
@@ -18,23 +17,42 @@ public class UserInterface {
     private Prompt prompt;
     private AccountManager accountManager;
     private  HashMap<Integer,Account> accountMap;
+    private Bank bank;
+
+    //properties of the logged in account:
     private int accountId;
     private Account account;
     private Customer accountOwner;
-    private Bank bank;
 
 
-    public UserInterface(AccountManager accountManager){
+    public UserInterface(AccountManager accountManager,Bank bank){
         this.prompt = new Prompt(System.in,System.out);
         this.accountManager = accountManager;
         this.accountMap = (HashMap)accountManager.getAccountMap();
+        this.bank = bank;
     }
 
 
     public void startMenu(){
-        System.out.println("Welcome to JavaBank!");
+
+        System.out.println("Welcome to JavaR Dola Bank!");
+
+        if(accountOwner == null) {
+            MyMenu welcome = MenuFactory.create(MenuType.WELCOME, this);
+            welcome.start();
+        }
+
+        if(accountOwner.getAccounts().size() == 0){
+            System.out.println("You need an account to be a customer here!");
+            MyMenu newAccount = MenuFactory.create(MenuType.OPENACCOUNT,this);
+            newAccount.start();
+        }
+
+       MyMenu main = MenuFactory.create(MenuType.MAIN,this);
+       main.start();
 
 
+/*
         IntegerInputScanner askClientNr = new IntegerSetInputScanner(getAccountNrsList());
         askClientNr.setMessage("What is your customer number?");
         accountId = prompt.getUserInput(askClientNr);
@@ -81,7 +99,7 @@ public class UserInterface {
                 System.out.println("Exiting.....");
                 System.exit(0);
             }
-        }
+        }*/
 
 
     }
@@ -110,4 +128,26 @@ public class UserInterface {
         accountManager.openAccount(accountType,accountOwner);
     }
 
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setAccountOwner(Customer accountOwner){
+        this.accountOwner = accountOwner;
+    }
+    public Customer getAccountOwner(){
+        return accountOwner;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public AccountManager getAccountManager() {
+        return accountManager;
+    }
 }
