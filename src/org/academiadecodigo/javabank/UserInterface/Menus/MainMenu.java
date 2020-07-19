@@ -1,7 +1,9 @@
-package UserInterface;
+package org.academiadecodigo.javabank.UserInterface.Menus;
 
-import UserInterface.Menus.MenuTypes.MainOptionsType;
+import org.academiadecodigo.javabank.UserInterface.MenuFactory;
+import org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes.MainOptionsType;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
+import org.academiadecodigo.javabank.UserInterface.UserInterface;
 
 public class MainMenu implements MyMenu {
 

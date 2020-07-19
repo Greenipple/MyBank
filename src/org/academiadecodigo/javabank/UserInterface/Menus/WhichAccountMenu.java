@@ -1,12 +1,14 @@
-package UserInterface;
+package org.academiadecodigo.javabank.UserInterface.Menus;
 
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
+import org.academiadecodigo.javabank.UserInterface.Menus.MyMenu;
+import org.academiadecodigo.javabank.UserInterface.UserInterface;
 import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.domain.account.CheckingAccount;
 
 import java.util.HashMap;
 
-public class WhichAccountMenu implements MyMenu{
+public class WhichAccountMenu implements MyMenu {
 
     private UserInterface userInterface;
     private HashMap<Integer, Account> accounts;

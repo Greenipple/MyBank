@@ -1,6 +1,4 @@
-package UserInterface.Menus.MenuTypes;
-
-import UserInterface.UserInterface;
+package org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes;
 
 public enum  MenuType {
 

@@ -1,15 +1,13 @@
-package UserInterface;
+package org.academiadecodigo.javabank.UserInterface.Menus;
 
-import UserInterface.Menus.MenuTypes.MenuType;
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerSetInputScanner;
+import org.academiadecodigo.javabank.UserInterface.MenuFactory;
+import org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes.MenuType;
 import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleInputScanner;
+import org.academiadecodigo.javabank.UserInterface.UserInterface;
 import org.academiadecodigo.javabank.domain.account.Account;
-import org.academiadecodigo.javabank.domain.account.CheckingAccount;
 import org.academiadecodigo.javabank.managers.AccountManager;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class DepositMenu implements MyMenu {
 

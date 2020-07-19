@@ -52,9 +52,14 @@ public class SavingsAccount extends Account {
      */
     @Override
     public boolean canWithdraw(double amount) {
-        if (amount > super.getBalance()+MIN_BALANCE){
+        double balance = super.getBalance();
+        if (amount > (balance-MIN_BALANCE)){
             return false;
         }
         return true;
+    }
+
+    public static double getMinBalance() {
+        return MIN_BALANCE;
     }
 }

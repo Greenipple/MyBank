@@ -43,6 +43,9 @@ public class Customer {
         accounts.put(account.getId(), account);
         return account.getId();
     }
+    public void deposit(int id, double amount){
+        accountManager.deposit(id,amount);
+    }
 
     /**
      * Gets the balance of an {@link Account}
