@@ -1,4 +1,4 @@
-package org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes;
+package org.academiadecodigo.javabank.userInterface.menus.menuTypes;
 
 public enum  MainOptionsType {
 

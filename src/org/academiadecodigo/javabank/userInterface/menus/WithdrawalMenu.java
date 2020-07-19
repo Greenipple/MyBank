@@ -1,10 +1,8 @@
-package org.academiadecodigo.javabank.UserInterface.Menus;
+package org.academiadecodigo.javabank.userInterface.menus;
 
-import org.academiadecodigo.javabank.UserInterface.MenuFactory;
-import org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes.MenuType;
+import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleInputScanner;
-import org.academiadecodigo.javabank.UserInterface.Menus.MyMenu;
-import org.academiadecodigo.javabank.UserInterface.UserInterface;
+import org.academiadecodigo.javabank.userInterface.UserInterface;
 import org.academiadecodigo.javabank.managers.AccountManager;
 
 public class WithdrawalMenu implements MyMenu {

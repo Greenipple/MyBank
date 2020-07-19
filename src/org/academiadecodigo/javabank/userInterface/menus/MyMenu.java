@@ -1,4 +1,4 @@
-package org.academiadecodigo.javabank.UserInterface.Menus;
+package org.academiadecodigo.javabank.userInterface.menus;
 
 import org.academiadecodigo.bootcamp.Prompt;
 

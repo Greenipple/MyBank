@@ -1,8 +1,9 @@
-package org.academiadecodigo.javabank.UserInterface;
+package org.academiadecodigo.javabank.userInterface.menus;
 
-import org.academiadecodigo.javabank.UserInterface.Menus.*;
-import org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes.MainOptionsType;
-import org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes.MenuType;
+import org.academiadecodigo.javabank.userInterface.UserInterface;
+import org.academiadecodigo.javabank.userInterface.menus.*;
+import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MainOptionsType;
+import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 
 
 public class MenuFactory {

@@ -1,9 +1,8 @@
-package org.academiadecodigo.javabank.UserInterface.Menus;
+package org.academiadecodigo.javabank.userInterface.menus;
 
-import org.academiadecodigo.javabank.UserInterface.MenuFactory;
-import org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes.MainOptionsType;
+import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MainOptionsType;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-import org.academiadecodigo.javabank.UserInterface.UserInterface;
+import org.academiadecodigo.javabank.userInterface.UserInterface;
 
 public class MainMenu implements MyMenu {
 
@@ -18,7 +17,7 @@ public class MainMenu implements MyMenu {
     public void start(){
 
         String[] options = {"Get balance", "Make a deposit",
-                "Make a withdrawal", "Open an account", "Exit the application"};
+                "Make a withdrawal", "Open an account", "Log off"};
 
         MenuInputScanner mainMenu = new MenuInputScanner(options);
         mainMenu.setMessage("What would you like to do, " + name + "?" );
@@ -27,8 +26,10 @@ public class MainMenu implements MyMenu {
         MainOptionsType choice = MainOptionsType.values()[answerIndex-1];
 
         if (answerIndex == 5){
-            System.out.println("Exiting...");
-            System.exit(0);
+            System.out.println("logging off.....");
+           userInterface.setAccountOwner(null);
+           userInterface.setAccount(null);
+           return;
         }
 
         MyMenu next = MenuFactory.create(choice,userInterface);

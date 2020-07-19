@@ -1,7 +1,7 @@
-package org.academiadecodigo.javabank.UserInterface.Menus;
+package org.academiadecodigo.javabank.userInterface.menus;
 
 
-import org.academiadecodigo.javabank.UserInterface.UserInterface;
+import org.academiadecodigo.javabank.userInterface.UserInterface;
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.domain.account.CheckingAccount;

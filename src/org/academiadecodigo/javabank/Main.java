@@ -1,6 +1,6 @@
 package org.academiadecodigo.javabank;
 
-import org.academiadecodigo.javabank.UserInterface.UserInterface;
+import org.academiadecodigo.javabank.userInterface.UserInterface;
 import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.managers.AccountManager;
 

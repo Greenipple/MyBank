@@ -1,10 +1,11 @@
-package org.academiadecodigo.javabank.UserInterface;
+package org.academiadecodigo.javabank.userInterface;
 
-import org.academiadecodigo.javabank.UserInterface.Menus.MenuTypes.MenuType;
+import org.academiadecodigo.javabank.userInterface.menus.MenuFactory;
+import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-import org.academiadecodigo.javabank.UserInterface.Menus.MyMenu;
+import org.academiadecodigo.javabank.userInterface.menus.MyMenu;
 import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.Account;
