@@ -8,7 +8,7 @@ import org.academiadecodigo.javabank.domain.account.CheckingAccount;
 
 import java.util.HashMap;
 
-public class BalanceMenu implements MyMenu {
+class BalanceMenu implements MyMenu {
 
     private UserInterface userInterface;
     private Customer customer;

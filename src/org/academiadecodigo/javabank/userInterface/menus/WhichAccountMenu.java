@@ -7,7 +7,7 @@ import org.academiadecodigo.javabank.domain.account.CheckingAccount;
 
 import java.util.HashMap;
 
-public class WhichAccountMenu implements MyMenu {
+class WhichAccountMenu implements MyMenu {
 
     private UserInterface userInterface;
     private HashMap<Integer, Account> accounts;

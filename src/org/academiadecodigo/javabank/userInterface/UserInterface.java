@@ -53,82 +53,8 @@ public class UserInterface {
        MyMenu main = MenuFactory.create(MenuType.MAIN,this);
        main.start();
 
-
-/*
-        IntegerInputScanner askClientNr = new IntegerSetInputScanner(getAccountNrsList());
-        askClientNr.setMessage("What is your customer number?");
-        accountId = prompt.getUserInput(askClientNr);
-
-
-        account = accountMap.get(accountId);
-        accountOwner = account.getAccountOwner();
-        System.out.println("This account is a " + account.getAccountType().toString().toLowerCase() +" account");
-
-
-        String[] mainOptions = {"Get balance", "Make a deposit", "Make a withdrawal", "Open an account", "Exit the application"};
-        MenuInputScanner mainMenu = new MenuInputScanner(mainOptions);
-        mainMenu.setMessage("What would you like to do " + accountOwner.getName() + "?");
-
-        int answerIndex = prompt.getUserInput(mainMenu);
-
-
-        switch (answerIndex){
-
-            case 1 ->{
-                System.out.println("You have "+ account.getBalance());
-            }
-
-            case 2 ->{
-                DoubleInputScanner howMuchDeposit = new DoubleInputScanner();
-                howMuchDeposit.setMessage("How much would you like to deposit?");
-                double amount = prompt.getUserInput(howMuchDeposit);
-                accountManager.deposit(accountId,amount);
-                System.out.println("Operation completed");
-            }
-
-            case 3 ->{
-                DoubleInputScanner howMuchWithdrawal = new DoubleInputScanner();
-                howMuchWithdrawal.setMessage("How much would you like to withdraw?");
-                double amount = prompt.getUserInput(howMuchWithdrawal);
-                accountManager.withdraw(accountId,amount);
-            }
-
-            case 4 ->{
-                openAccountMenu();
-            }
-
-            case 5 ->{
-                System.out.println("Exiting.....");
-                System.exit(0);
-            }
-        }*/
-
-
     }
 
-    private HashSet getAccountNrsList(){
-
-        //Make an HashSet of the account nrs (AccountNrs)
-
-        //accountMap = (HashMap)accountManager.getAccountMap();
-        // Collection<Account> accountCollection = accountMap.values();
-        HashSet<Integer> accountNrs = new HashSet<>();
-
-        for (Account account : accountMap.values()){
-            accountNrs.add(account.getId());
-        }
-
-        return accountNrs;
-    }
-
-    private void openAccountMenu(){
-        String[] newAccountOptions = {"Checking account", "Savings account"};
-        MenuInputScanner newAccountMenu = new MenuInputScanner(newAccountOptions);
-        newAccountMenu.setMessage("What kind of account would you like to open?");
-
-        AccountType accountType = prompt.getUserInput(newAccountMenu) == 1 ? AccountType.CHECKING :AccountType.SAVINGS;
-        accountManager.openAccount(accountType,accountOwner);
-    }
 
     public Bank getBank() {
         return bank;

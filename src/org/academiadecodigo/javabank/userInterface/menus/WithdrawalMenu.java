@@ -5,7 +5,7 @@ import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleInputScanner
 import org.academiadecodigo.javabank.userInterface.UserInterface;
 import org.academiadecodigo.javabank.managers.AccountManager;
 
-public class WithdrawalMenu implements MyMenu {
+class WithdrawalMenu implements MyMenu {
 
     private UserInterface userInterface;
     private AccountManager accountManager;

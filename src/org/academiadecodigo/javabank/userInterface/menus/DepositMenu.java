@@ -8,7 +8,7 @@ import org.academiadecodigo.javabank.managers.AccountManager;
 
 import java.util.HashMap;
 
-public class DepositMenu implements MyMenu {
+class DepositMenu implements MyMenu {
 
     private UserInterface userInterface;
     private HashMap<Integer, Account> accounts;

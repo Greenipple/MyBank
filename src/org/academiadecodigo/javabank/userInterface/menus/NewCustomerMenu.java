@@ -7,7 +7,7 @@ import org.academiadecodigo.javabank.userInterface.UserInterface;
 import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.domain.Customer;
 
-public class NewCustomerMenu implements MyMenu {
+class NewCustomerMenu implements MyMenu {
 
     private UserInterface userInterface;
     private Bank bank;

@@ -11,7 +11,7 @@ import org.academiadecodigo.javabank.domain.account.SavingsAccount;
 
 
 
-public class OpenAccountMenu implements MyMenu {
+class OpenAccountMenu implements MyMenu {
 
 
     private UserInterface userInterface;

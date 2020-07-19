@@ -4,7 +4,7 @@ import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MainOptionsTy
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
 
-public class MainMenu implements MyMenu {
+class MainMenu implements MyMenu {
 
     private UserInterface userInterface;
     private String name;
