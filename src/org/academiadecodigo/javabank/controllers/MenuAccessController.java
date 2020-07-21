@@ -21,7 +21,7 @@ public class MenuAccessController {
         this.userInterface = new UserInterface(bank);
     }
 
-    public Customer logIn(){
+    public Request logIn(){
 
         return userInterface.logIn();
     }

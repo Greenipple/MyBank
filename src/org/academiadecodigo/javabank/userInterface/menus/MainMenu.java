@@ -13,7 +13,7 @@ class MainMenu implements MyMenu {
 
     public MainMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.name = userInterface.getAccountOwner().getName();
+        this.name = userInterface.getBank().getCentralController().getCustomer().getName();
     }
 
     public void start(){

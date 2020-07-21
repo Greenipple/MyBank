@@ -23,7 +23,8 @@ class OpenAccountMenu implements MyMenu {
 
     public OpenAccountMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.customer = userInterface.getAccountOwner();
+        this.customer = userInterface.getBank().getCentralController().getCustomer();
+
     }
 
     public void start(){

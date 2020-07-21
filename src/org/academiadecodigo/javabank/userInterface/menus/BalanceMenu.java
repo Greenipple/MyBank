@@ -19,8 +19,8 @@ class BalanceMenu implements MyMenu {
 
     public BalanceMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.customer = userInterface.getAccountOwner();
-        this.accounts = userInterface.getAccountOwner().getAccounts();
+        this.customer = userInterface.getBank().getCentralController().getCustomer();
+        this.accounts = userInterface.getBank().getCentralController().getCustomer().getAccounts();
 
     }
 

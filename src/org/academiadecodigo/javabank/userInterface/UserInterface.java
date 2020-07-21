@@ -40,10 +40,10 @@ public class UserInterface {
 
     }
 
-    public Customer logIn(){
+    public Request logIn(){
         MyMenu welcome = MenuFactory.create(MenuType.WELCOME, this);
         welcome.start();
-        return accountOwner;
+        return request;
     }
 
     public Request openAccount(){

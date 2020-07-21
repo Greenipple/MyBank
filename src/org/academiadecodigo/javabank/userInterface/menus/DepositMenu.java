@@ -17,7 +17,7 @@ class DepositMenu implements MyMenu {
 
     public DepositMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.accounts = userInterface.getAccountOwner().getAccounts();
+        this.accounts = userInterface.getBank().getCentralController().getCustomer().getAccounts();
         this.accountManager = userInterface.getAccountManager();
     }
 

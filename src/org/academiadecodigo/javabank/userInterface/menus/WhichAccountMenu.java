@@ -17,7 +17,7 @@ class WhichAccountMenu implements MyMenu {
 
     public WhichAccountMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.accounts = userInterface.getAccountOwner().getAccounts();
+        this.accounts = userInterface.getBank().getCentralController().getCustomer().getAccounts();
     }
 
     public void start(){
