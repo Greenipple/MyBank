@@ -1,5 +1,6 @@
 package org.academiadecodigo.javabank.userInterface;
 
+import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.Account;
 
 public class Request {
@@ -8,6 +9,8 @@ public class Request {
     private double amount;
     private OperationType operationType;
     private int accountId;
+    private Customer customer;
+    private int customerId;
 
     public void setName(String name) {
         this.name = name;
@@ -39,5 +42,13 @@ public class Request {
 
     public void setAccountId(int accountId) {
         this.accountId = accountId;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

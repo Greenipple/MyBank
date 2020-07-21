@@ -32,8 +32,8 @@ public class CentralController implements Controller {
         if (customer == null){
             Controller logIn = ControllerFactory.create(ControllerType.LOGIN,bank);
             logIn.start();
-            Controller createAccount = ControllerFactory.create(ControllerType.OPENACCOUNT,bank);
-            createAccount.start();
+          /*  Controller createAccount = ControllerFactory.create(ControllerType.OPENACCOUNT,bank);
+            createAccount.start();*/
         }
         if(customer.getAccounts().size() == 0){
             System.out.println("You need an account to be a customer here!");

@@ -1,5 +1,7 @@
 package org.academiadecodigo.javabank.userInterface.menus;
 
+import org.academiadecodigo.javabank.userInterface.OperationType;
+import org.academiadecodigo.javabank.userInterface.Request;
 import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerSetInputScanner;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
@@ -50,6 +52,12 @@ public class WelcomeMenu implements MyMenu {
             for(Customer customer: customers){
                 if(customer.getCustomerId() == logId){
                     logCustomer = customer;
+
+                    Request request = new Request();
+                    request.setCustomer(customer);
+                    request.setOperationType(OperationType.LOGIN);
+                    userInterface.setRequest(request);
+
                     userInterface.setAccountOwner(logCustomer);
                     System.out.println("Welcome " + customer.getName());
                     return;

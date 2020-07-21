@@ -1,5 +1,7 @@
 package org.academiadecodigo.javabank.userInterface.menus;
 
+import org.academiadecodigo.javabank.userInterface.OperationType;
+import org.academiadecodigo.javabank.userInterface.Request;
 import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
@@ -30,6 +32,10 @@ class NewCustomerMenu implements MyMenu {
             System.exit(0);
         }
 
+        Request request = new Request();
+        request.setName(name);
+        request.setOperationType(OperationType.NEWCUSTOMER);
+        userInterface.setRequest(request);
 
         bank = userInterface.getBank();
         customer = new Customer(name);
