@@ -1,5 +1,6 @@
 package org.academiadecodigo.javabank.userInterface.menus;
 
+import org.academiadecodigo.javabank.userInterface.OperationType;
 import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleInputScanner;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
@@ -27,8 +28,9 @@ class WithdrawalMenu implements MyMenu {
         howMuch.setMessage("How much would you like to withdraw from account #" + userInterface.getAccount().getId());
 
         double amount = prompt.getUserInput(howMuch);
-        System.out.println((accountManager.withdraw(id,amount) == true) ?
-                "Operation complete!" : "Not enough money on that account!") ;
-
+       /* System.out.println((accountManager.withdraw(id,amount) == true) ?
+                "Operation complete!" : "Not enough money on that account!");*/
+        userInterface.getRequest().setOperationType(OperationType.WITHDRAWAL);
+        userInterface.getRequest().setAmount(amount);
     }
 }

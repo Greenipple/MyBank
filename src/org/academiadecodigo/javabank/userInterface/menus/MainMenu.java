@@ -1,5 +1,7 @@
 package org.academiadecodigo.javabank.userInterface.menus;
 
+import org.academiadecodigo.javabank.userInterface.OperationType;
+import org.academiadecodigo.javabank.userInterface.Request;
 import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MainOptionsType;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
@@ -27,9 +29,12 @@ class MainMenu implements MyMenu {
 
         if (answerIndex == 5){
             System.out.println("logging off.....");
-           userInterface.setAccountOwner(null);
-           userInterface.setAccount(null);
-           return;
+            Request request = new Request();
+            request.setOperationType(OperationType.LOGOFF);
+            userInterface.setRequest(request);
+            userInterface.setAccountOwner(null);
+            userInterface.setAccount(null);
+            return;
         }
 
         MyMenu next = MenuFactory.create(choice,userInterface);

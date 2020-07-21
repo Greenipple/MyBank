@@ -33,13 +33,13 @@ class NewCustomerMenu implements MyMenu {
 
         bank = userInterface.getBank();
         customer = new Customer(name);
-        bank.addCustomer(customer);
+        //bank.addCustomer(customer);
         userInterface.setAccountOwner(customer);
 
         System.out.println("Welcome to JavaR Dola Bank, " + name);
 
-        MyMenu openAccount = MenuFactory.create(MenuType.OPENACCOUNT,userInterface);
-        openAccount.start();
+        //MyMenu openAccount = MenuFactory.create(MenuType.OPENACCOUNT,userInterface);
+        //openAccount.start();
 
 
     }

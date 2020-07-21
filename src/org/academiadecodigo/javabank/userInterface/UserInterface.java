@@ -26,22 +26,44 @@ public class UserInterface {
     private Account account;
     private Customer accountOwner;
 
+    //Requests to send:
+    private Request request;
 
-    public UserInterface(AccountManager accountManager,Bank bank){
-        this.prompt = new Prompt(System.in,System.out);
-        this.accountManager = accountManager;
-        this.accountMap = (HashMap)accountManager.getAccountMap();
+
+    public UserInterface(Bank bank){
+
         this.bank = bank;
+        this.prompt = new Prompt(System.in,System.out);
+        this.accountManager = bank.getAccountManager();
+        this.accountMap = (HashMap)accountManager.getAccountMap();
+
+
     }
 
+    public Customer logIn(){
+        MyMenu welcome = MenuFactory.create(MenuType.WELCOME, this);
+        welcome.start();
+        return accountOwner;
+    }
 
-    public void startMenu(){
+    public Request openAccount(){
+        MyMenu openAccount = MenuFactory.create(MenuType.OPENACCOUNT,this);
+        openAccount.start();
+        return request;
+    }
+
+    public Request openMainMenu(){
+        MyMenu main = MenuFactory.create(MenuType.MAIN,this);
+        main.start();
+        return request;
+    }
+
+   /* public void startMenu(){
 
         System.out.println("Welcome to JavaR Dola Bank!");
 
         if(accountOwner == null) {
-            MyMenu welcome = MenuFactory.create(MenuType.WELCOME, this);
-            welcome.start();
+
         }
 
         if(accountOwner.getAccounts().size() == 0){
@@ -53,7 +75,7 @@ public class UserInterface {
        MyMenu main = MenuFactory.create(MenuType.MAIN,this);
        main.start();
 
-    }
+    }*/
 
 
     public Bank getBank() {
@@ -77,5 +99,13 @@ public class UserInterface {
 
     public AccountManager getAccountManager() {
         return accountManager;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
+    public Request getRequest() {
+        return request;
     }
 }

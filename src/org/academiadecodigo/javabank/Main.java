@@ -12,13 +12,13 @@ public class Main {
 
         AccountManager accountManager = new AccountManager();
         Bank bank = new Bank(accountManager);
-        UserInterface userInterface = new UserInterface(accountManager, bank);
+
         /*Customer firstCostumer = new Customer("Zé das Strings");
         firstCostumer.openAccount(AccountType.CHECKING);
         bank.addCustomer(new Customer("Maria Gustava dos Prazeres & Morais"));*/
 
         while(true) {
-            userInterface.startMenu();
+            bank.getCentralController().start();
         }
 
     }

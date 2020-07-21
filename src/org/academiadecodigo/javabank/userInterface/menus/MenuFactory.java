@@ -28,7 +28,7 @@ public class MenuFactory {
             }
 
             default -> {
-                return new MainMenu(userInterface){};
+                return new MainMenu(userInterface);
             }
         }
     }

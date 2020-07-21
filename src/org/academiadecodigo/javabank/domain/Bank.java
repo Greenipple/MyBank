@@ -1,6 +1,8 @@
 package org.academiadecodigo.javabank.domain;
 
+import org.academiadecodigo.javabank.controllers.CentralController;
 import org.academiadecodigo.javabank.managers.AccountManager;
+import org.academiadecodigo.javabank.userInterface.UserInterface;
 
 import java.util.HashSet;
 
@@ -13,6 +15,9 @@ public class Bank {
     private HashSet<Customer> customers = new HashSet<>();
     private static int numberCustomers = 0;
 
+    private CentralController centralController;
+
+
     /**
      * Creates a new instance of Bank and initializes it with the given account manager
      *
@@ -20,6 +25,7 @@ public class Bank {
      */
     public Bank(AccountManager accountManager) {
         this.accountManager = accountManager;
+        this.centralController = new CentralController(this,accountManager);
     }
 
     /**
@@ -56,5 +62,13 @@ public class Bank {
 
     public HashSet getCustomers(){
         return customers;
+    }
+
+    public AccountManager getAccountManager(){
+        return accountManager;
+    }
+
+    public CentralController getCentralController() {
+        return centralController;
     }
 }

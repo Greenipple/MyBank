@@ -9,7 +9,7 @@ import org.academiadecodigo.javabank.domain.Customer;
 import java.util.HashSet;
 import java.util.Set;
 
-class WelcomeMenu implements MyMenu {
+public class WelcomeMenu implements MyMenu {
 
     UserInterface userInterface;
     Bank bank;

@@ -4,6 +4,8 @@ package org.academiadecodigo.javabank.userInterface.menus;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleInputScanner;
 import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleRangeInputScanner;
+import org.academiadecodigo.javabank.userInterface.OperationType;
+import org.academiadecodigo.javabank.userInterface.Request;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.AccountType;
@@ -37,17 +39,24 @@ class OpenAccountMenu implements MyMenu {
 
         switch (answer){
             case 1 ->{
-                customer.openAccount(AccountType.CHECKING);
+                Request request = new Request();
+                request.setOperationType(OperationType.OPENCHECKINGACCOUNT);
+                userInterface.setRequest(request);
             }
 
             case 2 -> {
                 double amountToStart = askForMin();
-                int accountId = customer.openAccount(AccountType.SAVINGS);
-                customer.deposit(accountId,amountToStart);
+                //int accountId = customer.openAccount(AccountType.SAVINGS);
+                //customer.deposit(accountId,amountToStart);
+                Request request = new Request();
+                request.setOperationType(OperationType.OPENSAVINGSACCOUNT);
+                request.setAmount(amountToStart);
+                userInterface.setRequest(request);
             }
 
             case 3 ->{
-                userInterface.startMenu();
+                return;
+             //   userInterface.startMenu();
             }
         }
     }

@@ -1,5 +1,6 @@
 package org.academiadecodigo.javabank.userInterface.menus;
 
+import org.academiadecodigo.javabank.userInterface.OperationType;
 import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleInputScanner;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
@@ -32,7 +33,8 @@ class DepositMenu implements MyMenu {
                 userInterface.getAccount().getId() + " ?");
 
         double amount = prompt.getUserInput(askAmount);
-        accountManager.deposit(id,amount);
-
+        //accountManager.deposit(id,amount);
+        userInterface.getRequest().setAmount(amount);
+        userInterface.getRequest().setOperationType(OperationType.DEPOSIT);
     }
 }
