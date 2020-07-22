@@ -1,11 +1,10 @@
-package org.academiadecodigo.javabank.controllers;
+package org.academiadecodigo.javabank.controllers.list;
 
 import org.academiadecodigo.javabank.controllers.controlerGadgets.Controller;
 import org.academiadecodigo.javabank.controllers.controlerGadgets.ControllerFactory;
 import org.academiadecodigo.javabank.controllers.controlerGadgets.ControllerType;
 import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.domain.Customer;
-import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.managers.AccountManager;
 
 public class CentralController implements Controller {

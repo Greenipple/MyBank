@@ -1,12 +1,9 @@
 package org.academiadecodigo.javabank.controllers.list;
 
-import org.academiadecodigo.javabank.controllers.AbstractController;
-import org.academiadecodigo.javabank.controllers.CentralController;
 import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.userInterface.OperationType;
 import org.academiadecodigo.javabank.userInterface.Request;
-import org.academiadecodigo.javabank.userInterface.menus.MyMenu;
 
 public class LogInController extends AbstractController {
 

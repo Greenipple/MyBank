@@ -1,8 +1,7 @@
 package org.academiadecodigo.javabank.domain;
 
-import org.academiadecodigo.javabank.controllers.CentralController;
+import org.academiadecodigo.javabank.controllers.list.CentralController;
 import org.academiadecodigo.javabank.managers.AccountManager;
-import org.academiadecodigo.javabank.userInterface.UserInterface;
 
 import java.util.HashSet;
 
