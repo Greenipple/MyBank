@@ -1,24 +1,24 @@
 package org.academiadecodigo.javabank.controllers.list;
 
-import org.academiadecodigo.javabank.domain.Bank;
+import org.academiadecodigo.javabank.Services.serviceClasses.AccountService;
+import org.academiadecodigo.javabank.Services.serviceClasses.AuthenticateService;
+import org.academiadecodigo.javabank.Services.serviceClasses.CustomerService;
 import org.academiadecodigo.javabank.domain.Customer;
-import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.userInterface.Request;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
-import org.academiadecodigo.javabank.userInterface.menus.MenuFactory;
-import org.academiadecodigo.javabank.userInterface.menus.MyMenu;
-import org.academiadecodigo.javabank.userInterface.menus.WelcomeMenu;
-import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
+
+import java.util.List;
 
 public class MenuAccessController {
 
-    private Bank bank;
+    private AccountService accountService;
+    private AuthenticateService authenticateService;
+    private CustomerService customerService;
     private UserInterface userInterface;
 
 
-    public MenuAccessController(Bank bank){
-        this.bank = bank;
-        this.userInterface = new UserInterface(bank);
+    public MenuAccessController(){
+        this.userInterface = new UserInterface(this);
     }
 
     public Request logIn(){
@@ -34,5 +34,33 @@ public class MenuAccessController {
     public Request mainMenuInputs(){
         Request request = userInterface.openMainMenu();
         return request;
+    }
+
+    public List<Customer> getCustomerList(){
+        return customerService.list();
+    }
+
+    public void setCustomerService(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
+    public void setAuthenticateService(AuthenticateService authenticateService) {
+        this.authenticateService = authenticateService;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    public CustomerService getCustomerService() {
+        return customerService;
+    }
+
+    public AuthenticateService getAuthenticateService() {
+        return authenticateService;
+    }
+
+    public AccountService getAccountService() {
+        return accountService;
     }
 }

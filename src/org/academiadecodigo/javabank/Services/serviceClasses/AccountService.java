@@ -1,13 +1,12 @@
-package org.academiadecodigo.javabank.serviceInterfaceClasses;
+package org.academiadecodigo.javabank.Services.serviceClasses;
 
-import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.Account;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccountService implements org.academiadecodigo.javabank.serviceInterface.AccountService {
+public class AccountService implements org.academiadecodigo.javabank.Services.serviceInterface.AccountServiceInterface {
 
 
     private static int numberAccounts = 0;
@@ -26,11 +25,8 @@ public class AccountService implements org.academiadecodigo.javabank.serviceInte
     @Override
     public void add(Account account) {
 
-
         account.setId(getNextId());
-
         accountMap.put(account.getId(), account);
-
     }
 
     @Override

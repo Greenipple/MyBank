@@ -23,10 +23,7 @@ public class SavingsAccount extends Account {
     public SavingsAccount(int id) {
         super(id);
     }
-    public SavingsAccount(int id, Customer accountOwner) {
-        super(id);
-        super.setAccountOwner(accountOwner);
-    }
+    public SavingsAccount() {}
 
     /**
      * @see Account#getAccountType()

@@ -1,20 +1,21 @@
 package org.academiadecodigo.javabank;
 
-
 import org.academiadecodigo.javabank.Services.serviceClasses.AccountService;
 import org.academiadecodigo.javabank.Services.serviceClasses.AuthenticateService;
 import org.academiadecodigo.javabank.Services.serviceClasses.CustomerService;
 import org.academiadecodigo.javabank.controllers.controlerGadgets.ControllerFactory;
 import org.academiadecodigo.javabank.controllers.list.CentralController;
+import org.academiadecodigo.javabank.controllers.list.MainMenuController;
 import org.academiadecodigo.javabank.controllers.list.MenuAccessController;
+import org.academiadecodigo.javabank.controllers.list.OpenAccountController;
 import org.academiadecodigo.javabank.domain.account.AccountFactory;
 
-public class Main {
+public class Bootstrap {
 
 
 
-    public static void main(String[] args) {
 
+    public void init(){
         //Service section:
         AccountService accountService = new AccountService();
         CustomerService customerService = new CustomerService();
@@ -23,7 +24,6 @@ public class Main {
         customerService.setAuthenticateService(authenticateService);
         customerService.setAccountService(accountService);
         accountService.setAuthenticateService(authenticateService);
-        authenticateService.setCustomerService(customerService);
 
 
         //Controllers section:
@@ -47,12 +47,7 @@ public class Main {
 
 
 
-
-
-
-        while(true) {
-            centralController.start();
-        }
-
     }
+
+
 }

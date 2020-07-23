@@ -23,8 +23,7 @@ class OpenAccountMenu implements MyMenu {
 
     public OpenAccountMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.customer = userInterface.getBank().getCentralController().getCustomer();
-
+        this.customer = userInterface.getLoggedCustomer();
     }
 
     public void start(){
@@ -41,23 +40,24 @@ class OpenAccountMenu implements MyMenu {
         switch (answer){
             case 1 ->{
                 Request request = new Request();
+
                 request.setOperationType(OperationType.OPENCHECKINGACCOUNT);
                 userInterface.setRequest(request);
             }
 
             case 2 -> {
                 double amountToStart = askForMin();
-                //int accountId = customer.openAccount(AccountType.SAVINGS);
-                //customer.deposit(accountId,amountToStart);
+
                 Request request = new Request();
+
                 request.setOperationType(OperationType.OPENSAVINGSACCOUNT);
                 request.setAmount(amountToStart);
+
                 userInterface.setRequest(request);
             }
 
             case 3 ->{
                 return;
-             //   userInterface.startMenu();
             }
         }
     }

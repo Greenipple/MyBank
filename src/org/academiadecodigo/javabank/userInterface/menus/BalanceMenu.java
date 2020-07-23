@@ -9,18 +9,19 @@ import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.domain.account.CheckingAccount;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 class BalanceMenu implements MyMenu {
 
     private UserInterface userInterface;
     private Customer customer;
-    private HashMap<Integer,Account> accounts;
+    private HashSet<Account> accounts;
 
 
     public BalanceMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.customer = userInterface.getBank().getCentralController().getCustomer();
-        this.accounts = userInterface.getBank().getCentralController().getCustomer().getAccounts();
+        this.customer = userInterface.getLoggedCustomer();
+        this.accounts = customer.getAccounts();
 
     }
 
@@ -28,13 +29,15 @@ class BalanceMenu implements MyMenu {
 
         System.out.println("You have " + accounts.size() + (accounts.size() !=1 ? " accounts" : " account"));
 
-        for (Account account : accounts.values()){
+        for (Account account : accounts){
             System.out.println((account instanceof CheckingAccount ? "Checking" : "Savings") + " account #"
                     + account.getId() + " has " + account.getBalance() + " potatoes");
         }
 
         System.out.println("Total balance: " + customer.getBalance() + " potatoes");
+
         Request request = new Request();
+
         request.setOperationType(OperationType.BALANCE);
         userInterface.setRequest(request);
     }

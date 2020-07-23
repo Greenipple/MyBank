@@ -2,10 +2,10 @@ package org.academiadecodigo.javabank.test;
 
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.AccountType;
-import org.academiadecodigo.javabank.managers.AccountManager;
+
 
 public class CustomerTest {
-
+/*
     public boolean test() {
 
         AccountManager accountManager = new AccountManager();
@@ -33,5 +33,5 @@ public class CustomerTest {
         }
 
         return true;
-    }
+    */
 }

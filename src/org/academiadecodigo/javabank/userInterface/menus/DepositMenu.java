@@ -5,20 +5,20 @@ import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 import org.academiadecodigo.bootcamp.scanners.precisiondouble.DoubleInputScanner;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
 import org.academiadecodigo.javabank.domain.account.Account;
-import org.academiadecodigo.javabank.managers.AccountManager;
+
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 class DepositMenu implements MyMenu {
 
     private UserInterface userInterface;
-    private HashMap<Integer, Account> accounts;
-    private AccountManager accountManager;
+    private HashSet<Account> accounts;
+
 
     public DepositMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.accounts = userInterface.getBank().getCentralController().getCustomer().getAccounts();
-        this.accountManager = userInterface.getAccountManager();
+        this.accounts = userInterface.getLoggedCustomer().getAccounts();
     }
 
     @Override
@@ -26,14 +26,14 @@ class DepositMenu implements MyMenu {
 
         MyMenu whichAccount = MenuFactory.create(MenuType.WHICHACCOUNT,userInterface);
         whichAccount.start();
-        int id = userInterface.getAccount().getId();
+
 
         DoubleInputScanner askAmount = new DoubleInputScanner();
         askAmount.setMessage("How much would you like to deposit on account #" +
-                userInterface.getAccount().getId() + " ?");
+                userInterface.getRequest().getAccountId() + " ?");
 
         double amount = prompt.getUserInput(askAmount);
-        //accountManager.deposit(id,amount);
+
         userInterface.getRequest().setAmount(amount);
         userInterface.getRequest().setOperationType(OperationType.DEPOSIT);
     }

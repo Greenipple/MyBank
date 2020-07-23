@@ -7,36 +7,37 @@ import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.domain.account.CheckingAccount;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 class WhichAccountMenu implements MyMenu {
 
     private UserInterface userInterface;
-    private HashMap<Integer, Account> accounts;
+    private HashSet<Account> accounts;
 
 
 
     public WhichAccountMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.accounts = userInterface.getBank().getCentralController().getCustomer().getAccounts();
+        this.accounts = userInterface.getLoggedCustomer().getAccounts();
     }
 
     public void start(){
 
         if(accounts.size() == 1){
-            for (Account account : accounts.values()){
-                userInterface.setAccount(account);
+            for (Account account : accounts){
+
                 Request request = new Request();
-                request.setAccountId(userInterface.getAccount().getId());
+                request.setAccountId(account.getId());
+
                 userInterface.setRequest(request);
             }
             return;
         }
 
-
         String[] options = new String[accounts.size()];
         HashMap<Integer, Account> menuIndex  = new HashMap<>();
         int i = 0;
-        for(Account account : accounts.values()){
+        for(Account account : accounts){
             options[i] = (account instanceof CheckingAccount ? "Checking account #" : "Savings account #") +
                     account.getId() + " has " + account.getBalance() + " potatoes";
             i++;
@@ -53,12 +54,9 @@ class WhichAccountMenu implements MyMenu {
 
 
         Request request = new Request();
-        request.setAccountId(userInterface.getAccount().getId());
-       // request.setOperationType(OperationType.ACCOUNTLOGIN);
+        request.setAccountId(chosenAccountIndex);
+
         userInterface.setRequest(request);
-
-
-
 
     }
 }

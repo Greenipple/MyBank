@@ -3,13 +3,13 @@ package org.academiadecodigo.javabank.domain.account;
 import org.academiadecodigo.javabank.domain.Customer;
 
 public class AccountFactory {
-    public static Account create(AccountType type, int accountNr, Customer accountOwner){
+    public Account create(AccountType type){
        switch (type){
            case SAVINGS -> {
-               return  new SavingsAccount(accountNr,accountOwner);
+               return  new SavingsAccount();
            }
            default -> {
-               return new CheckingAccount(accountNr,accountOwner);
+               return new CheckingAccount();
            }
        }
     }

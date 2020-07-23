@@ -9,16 +9,17 @@ public abstract class Account {
 
     private int id;
     private double balance = 0;
-    private Customer accountOwner;
+   // private Customer accountOwner;
     /**
      * Initializes a new {@code Account} instance with an id
      *
      * @param id the account id
      */
+
     public Account(int id) {
         this.id = id;
     }
-
+    public Account(){}
     /**
      * Gets the account id
      *
@@ -104,11 +105,11 @@ public abstract class Account {
         return true;
     }
 
-    public void setAccountOwner(Customer accountOwner) {
+    /*public void setAccountOwner(Customer accountOwner) {
         this.accountOwner = accountOwner;
     }
 
     public Customer getAccountOwner() {
         return accountOwner;
-    }
+    }*/
 }

@@ -17,9 +17,7 @@ public class CheckingAccount extends Account {
     public CheckingAccount(int id) {
         super(id);
     }
-    public CheckingAccount(int id, Customer accountOwner) {
-        super(id);
-        super.setAccountOwner(accountOwner);
+    public CheckingAccount() {
     }
 
     /**

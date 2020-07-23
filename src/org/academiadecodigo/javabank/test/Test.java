@@ -2,7 +2,7 @@ package org.academiadecodigo.javabank.test;
 
 public class Test {
 
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
 
         CheckingAccountTest checkingAccountTest = new CheckingAccountTest();
         SavingsAccountTest savingsAccountTest = new SavingsAccountTest();
@@ -16,6 +16,6 @@ public class Test {
         System.out.println("Customer: " + (customerTest.test() ? "OK" : "FAIL"));
         System.out.println("Bank: " + (bankTest.test() ? "OK" : "FAIL"));
 
-    }
+    }*/
 
 }

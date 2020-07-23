@@ -1,10 +1,12 @@
 package org.academiadecodigo.javabank.domain;
 
+import org.academiadecodigo.javabank.Services.serviceClasses.AccountService;
 import org.academiadecodigo.javabank.domain.account.Account;
 import org.academiadecodigo.javabank.domain.account.AccountType;
-import org.academiadecodigo.javabank.managers.AccountManager;
+
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -14,48 +16,21 @@ public class Customer {
 
     private int customerId;
     private String name;
-    private AccountManager accountManager;
-    private HashMap<Integer, Account> accounts = new HashMap<>();
+
+    private HashSet<Account> accounts = new HashSet<>();
+    private AccountService accountService;
 
     public Customer(){};
     public Customer(String name){
         this.name = name;
     }
 
-    /**
-     * Sets the account manager
-     *
-     * @param accountManager the account manager to set
-     */
-    public void setAccountManager(AccountManager accountManager) {
-        this.accountManager = accountManager;
+
+
+    public void addAccount(Account account) {
+       accounts.add(account);
     }
 
-    /**
-     * Opens a new account
-     *
-     * @param accountType the account type to be opened
-     * @return the new account id
-     * @see AccountManager#openAccount(AccountType)
-     */
-    public int openAccount(AccountType accountType) {
-        Account account = accountManager.openAccount(accountType, this);
-        accounts.put(account.getId(), account);
-        return account.getId();
-    }
-    public void deposit(int id, double amount){
-        accountManager.deposit(id,amount);
-    }
-
-    /**
-     * Gets the balance of an {@link Account}
-     *
-     * @param id the id of the account
-     * @return the account balance
-     */
-    public double getBalance(int id) {
-        return accounts.get(id).getBalance();
-    }
 
     /**
      * Gets the total customer balance
@@ -66,7 +41,7 @@ public class Customer {
 
         double balance = 0;
 
-        for (Account account : accounts.values()) {
+        for (Account account : accounts) {
             balance += account.getBalance();
         }
 
@@ -84,7 +59,10 @@ public class Customer {
     public int getCustomerId(){
         return customerId;
     }
-    public HashMap getAccounts(){
+    public HashSet<Account> getAccounts(){
         return accounts;
+    }
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
     }
 }

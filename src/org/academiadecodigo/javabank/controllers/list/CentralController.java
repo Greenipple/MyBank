@@ -1,75 +1,57 @@
 package org.academiadecodigo.javabank.controllers.list;
 
+import org.academiadecodigo.javabank.Services.serviceClasses.AuthenticateService;
 import org.academiadecodigo.javabank.controllers.controlerGadgets.Controller;
 import org.academiadecodigo.javabank.controllers.controlerGadgets.ControllerFactory;
 import org.academiadecodigo.javabank.controllers.controlerGadgets.ControllerType;
-import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.domain.Customer;
-import org.academiadecodigo.javabank.managers.AccountManager;
+
 
 public class CentralController implements Controller {
 
-    private AccountManager accountManager;
-    private Bank bank;
+    private AuthenticateService authenticateService;
     private MenuAccessController menuAccessController;
+    private ControllerFactory controllerFactory;
 
-    //Logged in:
-    private Customer customer;
-   // private Account account;
-
-    public CentralController(Bank bank, AccountManager accountManager){
-
-        this.bank = bank;
-        this.accountManager = accountManager;
-        this.menuAccessController = new MenuAccessController(bank);
-    }
 
 
 
     public void start(){
-
-        if (customer == null){
-            Controller logIn = ControllerFactory.create(ControllerType.LOGIN,bank);
+        if (authenticateService.getLoggedInCustomer() == null){
+            AbstractController logIn = controllerFactory.create(ControllerType.LOGIN);
             logIn.start();
-          /*  Controller createAccount = ControllerFactory.create(ControllerType.OPENACCOUNT,bank);
-            createAccount.start();*/
+
         }
-        if(customer.getAccounts().size() == 0){
+        if(authenticateService.getLoggedInCustomer().getAccounts().size() == 0){
             System.out.println("You need an account to be a customer here!");
-            Controller createAccount = ControllerFactory.create(ControllerType.OPENACCOUNT,bank);
+            Controller createAccount = controllerFactory.create(ControllerType.OPENACCOUNT);
             createAccount.start();
         }
 
 
-        Controller main = ControllerFactory.create(ControllerType.MAIN,bank);
+        Controller main = controllerFactory.create(ControllerType.MAIN);
         main.start();
     }
 
     public Customer getCustomer(){
-        return  customer;
+        return authenticateService.getLoggedInCustomer();
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
-   /* public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }*/
 
     public MenuAccessController getMenuAccessController() {
         return menuAccessController;
     }
 
-    public AccountManager getAccountManager() {
-        return accountManager;
+    public void setAuthenticateService(AuthenticateService authenticateService) {
+        this.authenticateService = authenticateService;
     }
 
-    public void setAccountManager(AccountManager accountManager) {
-        this.accountManager = accountManager;
+    public void setMenuAccessController(MenuAccessController menuAccessController) {
+        this.menuAccessController = menuAccessController;
+    }
+
+    public void setControllerFactory(ControllerFactory controllerFactory) {
+        this.controllerFactory = controllerFactory;
     }
 }

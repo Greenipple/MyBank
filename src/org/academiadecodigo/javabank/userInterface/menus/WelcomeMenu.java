@@ -5,29 +5,30 @@ import org.academiadecodigo.javabank.userInterface.Request;
 import org.academiadecodigo.javabank.userInterface.menus.menuTypes.MenuType;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerSetInputScanner;
 import org.academiadecodigo.javabank.userInterface.UserInterface;
-import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.domain.Customer;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class WelcomeMenu implements MyMenu {
 
     UserInterface userInterface;
-    Bank bank;
+
 
 
     public WelcomeMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.bank = userInterface.getBank();
-
     }
+
+
 
     public void start(){
 
-        HashSet<Customer> customers = bank.getCustomers();
+
+        List<Customer> customers = userInterface.getCustomerList();
         int logId;
-        Customer logCustomer;
+
 
         //Create HashSet of client numbers:
         Set<Integer> clientIds= new HashSet<>();
@@ -51,14 +52,14 @@ public class WelcomeMenu implements MyMenu {
 
             for(Customer customer: customers){
                 if(customer.getCustomerId() == logId){
-                    logCustomer = customer;
 
                     Request request = new Request();
+
                     request.setCustomer(customer);
                     request.setOperationType(OperationType.LOGIN);
+
                     userInterface.setRequest(request);
 
-                    userInterface.setAccountOwner(logCustomer);
                     System.out.println("Welcome " + customer.getName());
                     return;
                 }

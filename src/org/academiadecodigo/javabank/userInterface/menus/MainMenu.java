@@ -13,7 +13,7 @@ class MainMenu implements MyMenu {
 
     public MainMenu(UserInterface userInterface){
         this.userInterface = userInterface;
-        this.name = userInterface.getBank().getCentralController().getCustomer().getName();
+        this.name = userInterface.getLoggedCustomer().getName();
     }
 
     public void start(){
@@ -24,16 +24,18 @@ class MainMenu implements MyMenu {
         MenuInputScanner mainMenu = new MenuInputScanner(options);
         mainMenu.setMessage("What would you like to do, " + name + "?" );
 
+
         int answerIndex = MyMenu.prompt.getUserInput(mainMenu);
         MainOptionsType choice = MainOptionsType.values()[answerIndex-1];
 
+
         if (answerIndex == 5){
             System.out.println("logging off.....");
+
             Request request = new Request();
+
             request.setOperationType(OperationType.LOGOFF);
             userInterface.setRequest(request);
-            userInterface.setAccountOwner(null);
-            userInterface.setAccount(null);
             return;
         }
 

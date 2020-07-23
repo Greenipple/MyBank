@@ -1,12 +1,11 @@
-package org.academiadecodigo.javabank.serviceInterface;
+package org.academiadecodigo.javabank.Services.serviceInterface;
 
 import org.academiadecodigo.javabank.domain.Customer;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-public interface CustomerService {
+public interface CustomerServiceInterface {
 
     Customer get(Integer id);
     List<Customer> list();

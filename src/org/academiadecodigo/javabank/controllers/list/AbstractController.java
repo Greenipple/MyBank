@@ -1,38 +1,50 @@
 package org.academiadecodigo.javabank.controllers.list;
 
+import org.academiadecodigo.javabank.Services.serviceClasses.AccountService;
+import org.academiadecodigo.javabank.Services.serviceClasses.AuthenticateService;
+import org.academiadecodigo.javabank.Services.serviceClasses.CustomerService;
 import org.academiadecodigo.javabank.controllers.controlerGadgets.Controller;
-import org.academiadecodigo.javabank.domain.Bank;
-import org.academiadecodigo.javabank.managers.AccountManager;
+
 
 public abstract class AbstractController implements Controller {
 
-    private Bank bank;
-    private AccountManager accountManager;
-    private CentralController centralController;
+
+    private AuthenticateService authenticateService;
+    private AccountService accountService;
+    private CustomerService customerService;
+
     private MenuAccessController menuAccessController;
 
-
-
-    public AbstractController(Bank bank){
-        this.bank = bank;
-        this.accountManager = bank.getAccountManager();
-        this.centralController = bank.getCentralController();
-        this.menuAccessController = centralController.getMenuAccessController();
+    protected AbstractController(MenuAccessController menuAccessController) {
+        this.menuAccessController = menuAccessController;
     }
 
-    public Bank getBank(){
-        return bank;
-    }
 
-    public AccountManager getAccountManager() {
-        return accountManager;
-    }
-
-    public CentralController centralController(){
-        return centralController;
+    public void setServices(AuthenticateService authenticateService, AccountService accountService,
+                            CustomerService customerService) {
+        this.authenticateService = authenticateService;
+        this.accountService = accountService;
+        this.customerService = customerService;
     }
 
     public MenuAccessController getMenuAccessController() {
         return menuAccessController;
     }
+
+    public AuthenticateService getAuthenticateService() {
+        return authenticateService;
+    }
+
+    public AccountService getAccountService() {
+        return accountService;
+    }
+
+    public CustomerService getCustomerService() {
+        return customerService;
+    }
 }
+
+
+
+
+

@@ -1,8 +1,8 @@
-package org.academiadecodigo.javabank.serviceInterface;
+package org.academiadecodigo.javabank.Services.serviceInterface;
 
 import org.academiadecodigo.javabank.domain.account.Account;
 
-public interface AccountService {
+public interface AccountServiceInterface {
 
     void add(Account account);
     void deposit(int id, double amount);

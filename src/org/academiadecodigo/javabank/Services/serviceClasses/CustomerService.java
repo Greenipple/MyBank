@@ -1,15 +1,16 @@
-package org.academiadecodigo.javabank.serviceInterfaceClasses;
+package org.academiadecodigo.javabank.Services.serviceClasses;
 
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.Account;
 
 import java.util.*;
 
-public class CustomerService implements org.academiadecodigo.javabank.serviceInterface.CustomerService {
+public class CustomerService implements org.academiadecodigo.javabank.Services.serviceInterface.CustomerServiceInterface {
 
 
     private HashMap<Integer, Customer> customerList;
     private AuthenticateService authenticateService;
+    private AccountService accountService;
 
     public CustomerService() {
         customerList = new HashMap<>();
@@ -29,9 +30,9 @@ public class CustomerService implements org.academiadecodigo.javabank.serviceInt
     @Override
     public Set<Integer> listCustomerAccountIds(Integer id) {
         Set<Integer> accountIds = new HashSet<>();
-        HashMap<Integer,Account> accountList = customerList.get(id).getAccounts();
+        HashSet<Account> accountList = customerList.get(id).getAccounts();
 
-        for (Account account : accountList.values()) {
+        for (Account account : accountList) {
             accountIds.add(account.getId());
         }
 
@@ -41,9 +42,9 @@ public class CustomerService implements org.academiadecodigo.javabank.serviceInt
     @Override
     public double getBalance(int customerId) {
 
-        HashMap<Integer,Account> accounts = customerList.get(customerId).getAccounts();
+        HashSet<Account> accounts = customerList.get(customerId).getAccounts();
         double balance = 0;
-        for(Account account : accounts.values()){
+        for(Account account : accounts){
             balance += account.getBalance();
         }
         return balance;
@@ -66,12 +67,17 @@ public class CustomerService implements org.academiadecodigo.javabank.serviceInt
 
     @Override
     public void add(Customer customer) {
-      customer.setCustomerId(getNextId());
-      customerList.put(customer.getCustomerId(),customer);
+        customer.setAccountService(accountService);
+        customer.setCustomerId(getNextId());
+        customerList.put(customer.getCustomerId(),customer);
 
     }
     public void setAuthenticateService(AuthenticateService authenticateService){
         this.authenticateService = authenticateService;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     /*public HashMap<Integer, Customer> getCustomersList(){
