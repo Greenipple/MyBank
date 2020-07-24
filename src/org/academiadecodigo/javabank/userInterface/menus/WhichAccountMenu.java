@@ -42,6 +42,7 @@ class WhichAccountMenu implements MyMenu {
                     account.getId() + " has " + account.getBalance() + " potatoes";
             i++;
             menuIndex.put(i,account);
+
         }
 
         MenuInputScanner chooseAccount = new MenuInputScanner(options);
@@ -50,11 +51,11 @@ class WhichAccountMenu implements MyMenu {
         int chosenAccountIndex = prompt.getUserInput(chooseAccount);
 
 
-        userInterface.setAccount(menuIndex.get(chosenAccountIndex));
+       // userInterface.setAccount(menuIndex.get(chosenAccountIndex));
 
 
         Request request = new Request();
-        request.setAccountId(chosenAccountIndex);
+        request.setAccountId(menuIndex.get(chosenAccountIndex).getId());
 
         userInterface.setRequest(request);
 

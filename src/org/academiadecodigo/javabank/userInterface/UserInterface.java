@@ -19,8 +19,8 @@ public class UserInterface {
 
 
     //properties of the logged in account:
-    private int accountId;
-    private Account account;
+   // private int accountId;
+   // private Account account;
     //private Customer accountOwner;
 
     //Requests to send:
@@ -60,13 +60,13 @@ public class UserInterface {
     }
 
 
-    public Account getAccount() {
+   /* public Account getAccount() {
         return account;
     }
 
     public void setAccount(Account account) {
         this.account = account;
-    }
+    }*/
 
 
     public void setRequest(Request request) {
